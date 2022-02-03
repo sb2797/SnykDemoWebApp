@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag andrestollatscs/snykdemowebapp:latest
+      run: docker build . --file SnykDemoWebApp/Dockerfile --tag andrestollatscs/snykdemowebapp:latest
     - name: Tag with version tag
       run: docker image tag andrestollatscs/snykdemowebapp:latest andrestollatscs/snykdemowebapp:$(date +%s)
     - name: Log in to Docker Hub
