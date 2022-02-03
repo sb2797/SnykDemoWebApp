@@ -12,6 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Chnage into project src folder
+        run: cd SnykDemoWebApp
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
         continue-on-error: true # To make sure that SARIF upload gets called
