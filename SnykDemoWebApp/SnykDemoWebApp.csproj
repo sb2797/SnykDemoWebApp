@@ -19,6 +19,7 @@
     <None Update="VulDB.sqlite">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\snyk-logo.svg" />
   </ItemGroup>
 
 </Project>
