@@ -1,0 +1,41 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snyk-demo-app
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: snyk-demo-app
+  template:
+    metadata:
+      labels:
+        app: snyk-demo-app
+    spec:
+      containers:
+        - image: romanutti/snyk-demo-app:latest
+          name: snyk-demo-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          resources: {}
+          env:
+            - name: "DOCKER"
+              value: "1"
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: snyk-demo-app
+spec:
+  ports:
+    - name: "8080"
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: snyk-demo-app
+  type: LoadBalancer
