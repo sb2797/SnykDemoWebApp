@@ -53,3 +53,14 @@ tf apply -target aws_apprunner_service.snyk_demo_web_app
 ```
 
 ### k8s
+- Go to the k8s folder
+
+```
+minikube start
+kubectl apply -f ns.yaml
+kubectl apply -f manifest.yaml
+
+kubectl get pods -w -n snyk
+
+minikube service snyk-demo-app -n snyk
+```

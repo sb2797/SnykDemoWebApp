@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: snyk-demo-app
+  namespace: snyk
 spec:
   replicas: 1
   strategy: {}
@@ -15,11 +16,11 @@ spec:
         app: snyk-demo-app
     spec:
       containers:
-        - image: romanutti/snyk-demo-app:latest
+        - image: andrestollatscs/snykdemowebapp:latest
           name: snyk-demo-app
           imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           resources: {}
           env:
             - name: "DOCKER"
@@ -31,11 +32,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: snyk-demo-app
+  namespace: snyk
 spec:
   ports:
     - name: "8080"
       port: 8080
-      targetPort: 8080
+      targetPort: 80
   selector:
     app: snyk-demo-app
   type: LoadBalancer
