@@ -21,3 +21,11 @@ resource "aws_apprunner_service" "snyk_demo_web_app" {
     Name = "example-apprunner-service"
   }
 }
+
+resource "aws_s3_bucket" "snyk_bucket" {
+  bucket = "${var.ecr_name}-bucket"
+
+  tags = {
+    Name = "${var.ecr_name}-bucket"
+  }
+}
